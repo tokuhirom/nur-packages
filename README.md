@@ -8,12 +8,33 @@
 
 | Package | Description |
 |---------|-------------|
-| `apprun-dedicated-application-provisioner` | SAKURA Cloud AppRun provisioner |
-| `db-schema-sync` | Database schema synchronization tool |
+| `apprun-dedicated-provisioner` | CLI tool for managing SAKURA Cloud AppRun Dedicated application provisioning |
 
 ## Usage
 
-### With Flakes
+### With devbox
+
+Add to your `devbox.json`:
+
+```json
+{
+  "packages": [
+    "github:tokuhirom/nur-packages#apprun-dedicated-provisioner"
+  ]
+}
+```
+
+To pin a specific version, use a commit hash:
+
+```json
+{
+  "packages": [
+    "github:tokuhirom/nur-packages/<commit-hash>#apprun-dedicated-provisioner"
+  ]
+}
+```
+
+### With Nix Flakes
 
 ```nix
 {
@@ -29,22 +50,10 @@
     in {
       devShells.default = pkgs.mkShell {
         buildInputs = [
-          tokuhirom-nur.packages.${system}.db-schema-sync
-          tokuhirom-nur.packages.${system}.apprun-dedicated-application-provisioner
+          tokuhirom-nur.packages.${system}.apprun-dedicated-provisioner
         ];
       };
     };
-}
-```
-
-### With NUR (after registration)
-
-```nix
-{ pkgs, nur, ... }:
-{
-  environment.systemPackages = [
-    nur.repos.tokuhirom.db-schema-sync
-  ];
 }
 ```
 
@@ -52,7 +61,7 @@
 
 ```bash
 # Build a package
-nix build .#db-schema-sync
+nix build .#apprun-dedicated-provisioner
 
 # Check all packages
 nix flake check
