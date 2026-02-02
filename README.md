@@ -9,6 +9,7 @@
 | Package | Description |
 |---------|-------------|
 | `apprun-dedicated-provisioner` | CLI tool for managing SAKURA Cloud AppRun Dedicated application provisioning |
+| `dashyard` | Lightweight Prometheus metrics dashboard |
 
 ## Usage
 
@@ -56,6 +57,14 @@ To pin a specific version, use a commit hash:
     };
 }
 ```
+
+## Adding a new package
+
+1. Create a package definition at `pkgs/<package-name>/default.nix`
+2. Add `<package-name> = pkgs.callPackage ./pkgs/<package-name> { };` to `default.nix` (without this, the package won't be included in the flake's `packages` output and won't be accessible from devbox, etc.)
+3. Update the Packages table in this README
+
+For Go projects, you can use GoReleaser to generate the nix package definition automatically. See [dashyard's .goreleaser.yaml](https://github.com/tokuhirom/dashyard/blob/main/.goreleaser.yaml) for a reference configuration.
 
 ## Development
 
