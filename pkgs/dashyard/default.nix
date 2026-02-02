@@ -9,22 +9,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1ggbgr3bmmhsdpa6wsphmwkn6j6d7p13gjbb3f3hiym3zc21jxmn";
-    aarch64-linux = "06va3q0dzk23i5ls2xa9qw4q82ykh8n95rmq566610a720ny2pm6";
-    x86_64-darwin = "0yfc66sqkgxya0ab9l29fn2m62p6yv1ia2ngpid2izsnc613gfaj";
-    aarch64-darwin = "0i7ndni5vd290949kg80hp6krz1csgcxhzryawdhxp6prhgb9n8y";
+    x86_64-linux = "1csxlyrqxyr1qpp4b87bjwxh5lpy24v45b5lxdsj60mky5fln9lr";
+    aarch64-linux = "0q5xzrgzr2iym8y58j3rhr1zgblkhfp9g435qcv33ypmimfv5n83";
+    x86_64-darwin = "1cxrazas3m4ql7g04rd1phmcqb2xb2mklmzsxwc3wf1d6zcwcidw";
+    aarch64-darwin = "0ag59b486vrsx2xgbrl3lq92gi4y9r7212zpwiz2hqv00bipi1p4";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/tokuhirom/dashyard/releases/download/v0.12.1/dashyard_0.12.1_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/tokuhirom/dashyard/releases/download/v0.12.1/dashyard_0.12.1_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/tokuhirom/dashyard/releases/download/v0.12.1/dashyard_0.12.1_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/tokuhirom/dashyard/releases/download/v0.12.1/dashyard_0.12.1_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/tokuhirom/dashyard/releases/download/v0.13.0/dashyard_0.13.0_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/tokuhirom/dashyard/releases/download/v0.13.0/dashyard_0.13.0_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/tokuhirom/dashyard/releases/download/v0.13.0/dashyard_0.13.0_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/tokuhirom/dashyard/releases/download/v0.13.0/dashyard_0.13.0_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "dashyard";
-  version = "0.12.1";
+  version = "0.13.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
